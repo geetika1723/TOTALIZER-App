@@ -2,6 +2,7 @@ package com.example.totalizer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bC,bD,bAdd,bSub,bDiv,bMulti,bMod,bRoot,bDecimal,bFact,bPow,bInverse,bEquals;
+    Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,bC,bD,bAdd,bSub,bDiv,bMulti,bMod,bRoot,bDecimal,bScience,bPow,bInverse,bEquals;
     EditText res;
     Double value1,value2;
     Boolean add = false, sub = false , multi=false,div=false,mod=false,pow=false, clear =false;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         bMod=findViewById(R.id.btn_mod);
         bRoot=findViewById(R.id.btn_root);
         bDecimal=findViewById(R.id.btn_decimal);
-        bFact=findViewById(R.id.btn_factorial);
+        bScience=findViewById(R.id.btn_Science);
         bPow=findViewById(R.id.btn_power);
         bInverse=findViewById(R.id.btn_inverse);
         bEquals=findViewById(R.id.btn_equal);
@@ -234,23 +235,6 @@ public class MainActivity extends AppCompatActivity {
                     }
             }
         });
-        bFact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(res.getText()==null||clear ==true)
-                    res.setText("");
-                else {
-                    value1 = Double.parseDouble(res.getText().toString());
-                    double fact = 1;
-                    for (int i=1;i<=value1;i++)
-                    {
-                        fact=fact*i;
-                    }
-                    res.setText(fact+"");
-
-                }
-            }
-        });
         bPow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -321,6 +305,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 clear=true;
             }}
+        });
+        bScience.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Sci_CalActivity.class));
+                finish();
+            }
         });
 
 
